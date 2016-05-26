@@ -1,0 +1,25 @@
+{
+  "name": "database-adapter-flux",
+  "version": "0.0.0",
+  "description": "Un adaptador para el control de flujo de datos virtual basados en Firebase.",
+  "author": "Jonathan Delgado <hi@jon.soy> (http://jon.soy/)",
+  "license": "MIT",
+  "homepage": "https://github.com/JonDotsoy/database-adapter-flux#readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "virtual",
+    "data"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonDotsoy/database-adapter-flux.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JonDotsoy/database-adapter-flux/issues"
+  }
+}
