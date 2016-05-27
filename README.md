@@ -34,17 +34,29 @@ def.initialize( {
 ### Transportador `[Transport] def.transport()`
 El transportador es un colección de definiciones de conexión permitiendo tener a disposición múltiples definiciones de conexiones que se usaran para comunicarse con el servidor.
 
-#### Nueva definición `def.transport().newRef( name, { url, room } )`
+#### Nueva referencia `def.transport().newRef( name, { url, room } )`
+Crea una nueva referencia nombrada a un transportador.
 
 **Parametros**:
  
- * **name** `String`: Contiene el nombre asociado a la nueva conexión. (:warning: esta definición se creara solo si no existe previamente)
- * **Opcines** `Object`: Configuraciones de la definición.
+ * **name** `String`: Contiene el nombre asociado a la nueva conexión. (:warning: esta referencia se creara solo si no existe previamente)
+ * **Opcines** `Object`: Configuraciones de la referencia.
     * **url** `String`: Contiene la [URL] usada para conectarse con el servicio.
-    * **room** `String`: Sala a la que se conectara el servicio. 
+    * **room** `String`: Sala a la que se conectara el servicio.
 
 
-### Autentificación de usuario `[Object] def.auth().currentUser`
+
+#### Obtener una referencia `[Reference] def.transport().ref( name )`
+Obtiene una referencia nombrada.
+
+
+
+### Autentificador `[Auth] def.auth()`
+El autentificador es un elemento que gestiona la autentificación del usuario.
+
+
+
+#### Autentificación de usuario `[Object] def.auth().currentUser`
 Contiene los datos de los usuarios a controlar.
 
 ```javascript
@@ -58,7 +70,8 @@ if (user) {
 ```
 
 
-### Autentificación con email `[Promise] def.auth().signInWithEmail( <email> )`
+
+#### Autentificación con email `[Promise] def.auth().signInWithEmail( <email> )`
 Permite enviar una email al servidor para realizar una autentificación enviando una link al email.
 
 | Parámetro | Descripción |
@@ -76,13 +89,16 @@ def.auth().signInWithEmail( "a@a.com" )
 })
 ```
 
-#### Código de errors
+
+
+##### Código de errors
 
 | Código | Definición |
 | ------ | ---------- |
 | 0 | sin Errores durante la ejecución |
 | 1 | El email no es valido |
 | 2 | error no identificado algo salido mal durante su ejecución |
+
 
 
 ## API Server (Uso Manul)
@@ -94,9 +110,10 @@ io.of('/def').on('connection', function (socket) {
 })
 ```
 
+
+
 ### Authentificación con Email
 Recibe el email para realizar la identificación con el correo electrónico.
-
 
 ```javascript
 socket.on('request', function (data, cb) {
@@ -112,20 +129,24 @@ socket.on('request', function (data, cb) {
 ```
 
 
+
 ## API Server
 
 ```javascript
 import defs from 'database-adapter-flux/server'
 ```
 
-### Scope
 
+
+### Scope
 El `scope` es una variable que contiene todas las configuraciones de la sentencia actual del cliente.
 
 ```javascript
 defs.use('blabla', function (scope, data){
 })
 ```
+
+
 
 #### Opciones
 
@@ -137,6 +158,9 @@ defs.use('blabla', function (scope, data){
         * **Api-key** `String`: Contiene la key api del cliente.
         * **Session-Data** `Object`: Contiene los datos de session obtenidos por el cliente.
  * **data** `Object`: Son los datos utilizados por la instancia enviada al servidor.
+
+
+
 
 
 [Firebase]: https://firebase.google.com/
